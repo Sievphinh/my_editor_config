@@ -32,12 +32,19 @@ return require('packer').startup(function(use)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
   use "numToStr/Comment.nvim" -- Comment 
+  use {
+  'nvim-lualine/lualine.nvim',
+  requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+}
   -- Nvim-tree
   use "kyazdani42/nvim-web-devicons"
   use "folke/which-key.nvim"
   -- colorscheme
   use "ellisonleao/gruvbox.nvim"
-
+   -- Telescope
+  use "nvim-telescope/telescope.nvim"
+  use "tom-anders/telescope-vim-bookmarks.nvim"
+  use "nvim-telescope/telescope-media-files.nvim"
   -- Treesitter
   use { "nvim-treesitter/nvim-treesitter" }
   use "JoosepAlviste/nvim-ts-context-commentstring"

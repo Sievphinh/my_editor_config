@@ -8,7 +8,6 @@ local servers = {
   "cssmodules_ls",
   "emmet_ls",
   "html",
-  "jdtls",
   "jsonls",
   "solc",
   "sumneko_lua",
@@ -19,7 +18,6 @@ local servers = {
   "bashls",
   "clangd",
   "rust_analyzer",
-  "taplo",
 }
 
 local settings = {

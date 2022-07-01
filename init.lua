@@ -1,6 +1,8 @@
 require "user.plugins"
 require "user.keymaps"
 require "user.whichkey"
+require "user.telescope"
+require "user.lualine" 
 require "user.nvim-tree"
 require "user.colorscheme"
 require "user.treesitter"
@@ -13,4 +15,5 @@ require "user.colorizer"
 require "user.cmp"
 require "user.nvim-web-icons"
 require "user.options"
+
 
