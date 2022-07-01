@@ -19,8 +19,11 @@ return require('packer').startup(function(use)
   },
   tag = 'nightly' -- optional, updated every week. (see issue #1193)
 }
+-- Nvim-tree
 use "kyazdani42/nvim-web-devicons"
 use "folke/which-key.nvim"
+-- colorscheme
+use "ellisonleao/gruvbox.nvim"
   if packer_bootstrap then
     require('packer').sync()
   end

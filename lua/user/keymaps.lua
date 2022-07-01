@@ -31,4 +31,13 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("v", ">", ">gv", opts)
 keymap("v", "<", "<gv", opts)
 
+-- move text up and down
+keymap("v", "<A-k>", ":m .+1<CR>==", opts) 
+keymap("v", "<A-j>", ":m .-2<CR>==", opts) 
+--visual block
+keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
+keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
+keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
+keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+
 -- return M
