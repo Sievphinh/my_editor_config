@@ -80,6 +80,10 @@ local opts = {
 
 local mappings = {
   ["e"] = {"<cmd>NvimTreeToggle<cr>", "File Explorer"},
+  ["h"]= {"<cmd>:hlsearch<cr>",  "No Highlight Search" },
+  ["q"] = {"<cmd>:q<cr>", "Quit File" },
+  ["w"] = {"<cmd>:w<cr>", "Save File"},
+  
 }
 
 wk.setup(setup)
