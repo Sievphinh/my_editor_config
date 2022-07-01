@@ -58,10 +58,37 @@ return require('packer').startup(function(use)
     run = "./install.sh",
     requires = "hrsh7th/nvim-cmp",
   }
-  -- Snippet 
-    -- snippets
+  -- LSP
+  use "neovim/nvim-lspconfig" -- enable LSP
+  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use "simrat39/symbols-outline.nvim"
+  use "ray-x/lsp_signature.nvim"
+  use "b0o/SchemaStore.nvim"
+  use {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+  }
+  -- use "github/copilot.vim"
+  --[[ use {
+    "zbirenbaum/copilot.lua",
+    event = { "VimEnter" },
+    config = function()
+      vim.defer_fn(function()
+        require "user.copilot"
+      end, 100)
+    end,
+  }
+  use {
+    "zbirenbaum/copilot-cmp",
+    module = "copilot_cmp",
+  } ]]
+  use "RRethy/vim-illuminate"
+  -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+  -- UI
+  use "rcarriga/nvim-notify"
   -- Rust 
   -- need to add crates and rust tools
   -- auto-tag
