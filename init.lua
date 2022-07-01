@@ -3,5 +3,6 @@ require "user.keymaps"
 require "user.whichkey"
 require "user.nvim-tree"
 require "user.colorscheme"
+require "user.treesitter"
 require "user.options"
 

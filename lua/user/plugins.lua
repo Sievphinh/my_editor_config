@@ -4,6 +4,14 @@ if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd [[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]]
+
 return require('packer').startup(function(use)
   -- My plugins here
   -- use 'foo1/bar1.nvim'
@@ -24,6 +32,15 @@ use "kyazdani42/nvim-web-devicons"
 use "folke/which-key.nvim"
 -- colorscheme
 use "ellisonleao/gruvbox.nvim"
+
+-- Treesitter
+use { "nvim-treesitter/nvim-treesitter" }
+use "JoosepAlviste/nvim-ts-context-commentstring"
+use { "p00f/nvim-ts-rainbow" }
+use "nvim-treesitter/playground"
+use "windwp/nvim-ts-autotag"
+-- auto-tag
+use "windwp/nvim-autopairs"
   if packer_bootstrap then
     require('packer').sync()
   end
