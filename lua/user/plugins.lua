@@ -27,21 +27,45 @@ return require('packer').startup(function(use)
   },
   tag = 'nightly' -- optional, updated every week. (see issue #1193)
 }
--- Nvim-tree
-use "kyazdani42/nvim-web-devicons"
-use "folke/which-key.nvim"
--- colorscheme
-use "ellisonleao/gruvbox.nvim"
+  use "norcalli/nvim-colorizer.lua" -- show color
+  use "nacro90/numb.nvim" -- peeks lines of the buffer
+  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
+  use "numToStr/Comment.nvim" -- Comment 
+  -- Nvim-tree
+  use "kyazdani42/nvim-web-devicons"
+  use "folke/which-key.nvim"
+  -- colorscheme
+  use "ellisonleao/gruvbox.nvim"
 
--- Treesitter
-use { "nvim-treesitter/nvim-treesitter" }
-use "JoosepAlviste/nvim-ts-context-commentstring"
-use { "p00f/nvim-ts-rainbow" }
-use "nvim-treesitter/playground"
-use "windwp/nvim-ts-autotag"
--- auto-tag
-use "windwp/nvim-autopairs"
-  if packer_bootstrap then
-    require('packer').sync()
-  end
+  -- Treesitter
+  use { "nvim-treesitter/nvim-treesitter" }
+  use "JoosepAlviste/nvim-ts-context-commentstring"
+  use { "p00f/nvim-ts-rainbow" }
+  use "nvim-treesitter/playground"
+  use "windwp/nvim-ts-autotag"
+  -- cmp plugins
+   use { "hrsh7th/nvim-cmp" }
+  use "hrsh7th/cmp-buffer" -- buffer completions
+  use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "saadparwaiz1/cmp_luasnip" -- snippet completions
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-emoji"
+  use "hrsh7th/cmp-nvim-lua"
+  use {
+    "tzachar/cmp-tabnine",
+    run = "./install.sh",
+    requires = "hrsh7th/nvim-cmp",
+  }
+  -- Snippet 
+    -- snippets
+  use "L3MON4D3/LuaSnip" --snippet engine
+  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+  -- Rust 
+  -- need to add crates and rust tools
+  -- auto-tag
+    if packer_bootstrap then
+      require('packer').sync()
+    end
 end)

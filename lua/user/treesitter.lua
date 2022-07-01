@@ -7,6 +7,8 @@ end
 -- We need to add something later on maybe something relates to Typescript 
 --
 --
+local ft_to_parser = require"nvim-treesitter.parsers".filetype_to_parsername
+ft_to_parser.motoko = "typescript"
 
 configs.setup({
   ensure_installed = "all", -- one of all languages or list of languages
@@ -31,11 +33,29 @@ configs.setup({
   -- Add autopairs, autotag, rainbow and indent later
   --
   -- 
+  autopairs = {
+		enable = true,
+	},
+  autotag = {
+		enable = true,
+		disable = { "xml" },
+	},
   context_commentstring = {
 		enable = true,
 		enable_autocmd = false,
 	},
-
+  rainbow = {
+		enable = true,
+		colors = {
+			"Gold",
+			"Orchid",
+			"DodgerBlue",
+			"Cornsilk",
+			"Salmon",
+			"LawnGreen",
+		},
+		disable = { "html" },
+	},
   playground = {
 		enable = true,
 	},

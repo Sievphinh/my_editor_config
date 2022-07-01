@@ -1,6 +1,6 @@
 local status_ok, wk =  pcall(require, "which-key")
 
-if not status_ok then 
+if not status_ok then
   return
 end
 
@@ -83,6 +83,7 @@ local mappings = {
   ["h"]= {"<cmd>nohlsearch<cr>",  "No Highlight Search" },
   ["q"] = {'<cmd>lua require("user.functions").smart_quit()<cr>', "Quit File" },
   ["w"] = {"<cmd>:w<cr>", "Save File"},
+  ["/"] = { '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>', "Comment" },
   
 }
 
