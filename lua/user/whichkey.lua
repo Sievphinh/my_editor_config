@@ -84,6 +84,11 @@ local mappings = {
   ["q"] = { '<cmd>lua require("user.functions").smart_quit()<cr>', "Quit File" },
   ["w"] = { "<cmd>:w<cr>", "Save File" },
   ["/"] = { '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>', "Comment" },
+  s = {
+    name = "Split",
+    h = { "<cmd>split<cr>", "Horizontal Split" },
+    v = { "<cmd>vsplit<cr>", "Vertical Split" }
+  },
   f = {
     name = "Find",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
