@@ -36,6 +36,7 @@ return require('packer').startup(function(use)
   'nvim-lualine/lualine.nvim',
   requires = { 'kyazdani42/nvim-web-devicons', opt = true }
 }
+  use "akinsho/toggleterm.nvim"
   -- Nvim-tree
   use "kyazdani42/nvim-web-devicons"
   use "folke/which-key.nvim"
@@ -98,7 +99,28 @@ return require('packer').startup(function(use)
   use "rcarriga/nvim-notify"
   -- Rust 
   -- need to add crates and rust tools
-  -- auto-tag
+  -- UI
+  -- use { "stevearc/dressing.nvim" }
+  -- use "ghillb/cybu.nvim"
+  -- use { "christianchiarulli/nvim-gps", branch = "text_hl" }
+  -- use "tversteeg/registers.nvim"
+  -- use "rcarriga/nvim-notify"
+  -- use "kyazdani42/nvim-web-devicons"
+  -- use "kyazdani42/nvim-tree.lua"
+  -- use "tamago324/lir.nvim"
+  use "goolord/alpha-nvim"
+  -- use "folke/which-key.nvim"
+  -- use "folke/zen-mode.nvim"
+  -- use "karb94/neoscroll.nvim"
+  -- use "folke/todo-comments.nvim"
+  -- use "andymass/vim-matchup"
+  -- Git
+  use "lewis6991/gitsigns.nvim"
+  use "f-person/git-blame.nvim"
+  use "ruifm/gitlinker.nvim"
+  use "mattn/vim-gist"
+  use "mattn/webapi-vim"
+
     if packer_bootstrap then
       require('packer').sync()
     end
