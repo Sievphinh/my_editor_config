@@ -29,6 +29,10 @@ keymap("n", "<C-Up>", ":resize +2<CR>", opts)
 keymap("n", "<C-Down>", ":resize -2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+-- Buffer keymap
+keymap("n", "<Tab>", ":TablineBufferNext<cr>", opts)
+keymap("n", "<S-Tab>", ":TablineBufferPrevious<cr>", opts)
+keymap("n", "bd", ":bdelete<cr>", opts)
 -- Visual Mode
 -- Indent line
 -- v stands for visual mode

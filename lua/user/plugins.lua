@@ -38,10 +38,43 @@ return require('packer').startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
   use "lukas-reineke/indent-blankline.nvim"
-  use "akinsho/toggleterm.nvim"
-  use "kylechui/nvim-surround"
-  use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
-
+  use {
+  'kdheepak/tabline.nvim',
+  config = function()
+    require'tabline'.setup {
+      -- Defaults configuration options
+      enable = true,
+      options = {
+      -- If lualine is installed tabline will use separators configured in lualine by default.
+      -- These options can be used to override those settings.
+        section_separators = {'', ''},
+        component_separators = {'', ''},
+        max_bufferline_percent = 66, -- set to nil by default, and it uses vim.o.columns * 2/3
+        show_tabs_always = false, -- this shows tabs only when there are more than one tab or if the first tab is named
+        show_devicons = true, -- this shows devicons in buffer section
+        show_bufnr = false, -- this appends [bufnr] to buffer section,
+        show_filename_only = false, -- shows base filename only instead of relative path in filename
+        modified_icon = "+ ", -- change the default modified icon
+        modified_italic = false, -- set to true by default; this determines whether the filename turns italic if modified
+        show_tabs_only = false, -- this shows only tabs instead of tabs + buffers
+      }
+    }
+    vim.cmd[[
+      set guioptions-=e " Use showtabline in gui vim
+      set sessionoptions+=tabpages,globals " store tabpages and globals in session
+    ]]
+  end,
+  requires = { { 'hoob3rt/lualine.nvim', opt=true }, {'kyazdani42/nvim-web-devicons', opt = true} }
+}
+  -- cmp
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-buffer"
+  use "hrsh7th/cmp-path"
+  use "hrsh7th/cmp-cmdline"
+  use "hrsh7th/nvim-cmp"
+  use "saadparwaiz1/cmp_luasnip"
+  use "L3MON4D3/LuaSnip"
+  use "rafamadriz/friendly-snippets"
   -- Nvim-tree
   use "kyazdani42/nvim-web-devicons"
   use "folke/which-key.nvim"
@@ -58,30 +91,10 @@ return require('packer').startup(function(use)
   use "nvim-treesitter/playground"
   use "windwp/nvim-ts-autotag"
   -- cmp plugins
-  use { "hrsh7th/nvim-cmp" }
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
-  use "saadparwaiz1/cmp_luasnip" -- snippet completions
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-emoji"
-  use "hrsh7th/cmp-nvim-lua"
-  use {
-    "tzachar/cmp-tabnine",
-    run = "./install.sh",
-    requires = "hrsh7th/nvim-cmp",
-  }
   -- LSP
-  use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-  use "simrat39/symbols-outline.nvim"
-  use "ray-x/lsp_signature.nvim"
-  use "b0o/SchemaStore.nvim"
-  use {
-    "folke/trouble.nvim",
-    cmd = "TroubleToggle",
-  }
+  use "neovim/nvim-lspconfig"  
+  use "williamboman/nvim-lsp-installer"
+  use "onsails/lspkind-nvim"
   -- use "github/copilot.vim"
   --[[ use {
     "zbirenbaum/copilot.lua",
@@ -96,10 +109,7 @@ return require('packer').startup(function(use)
     "zbirenbaum/copilot-cmp",
     module = "copilot_cmp",
   } ]]
-  use "RRethy/vim-illuminate"
   -- snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
   -- UI
   use "rcarriga/nvim-notify"
   -- Rust
@@ -107,7 +117,6 @@ return require('packer').startup(function(use)
   -- UI
   use { "stevearc/dressing.nvim" }
   -- use "ghillb/cybu.nvim"
-  use { "christianchiarulli/nvim-gps", branch = "text_hl" }
   -- use "tversteeg/registers.nvim"
   -- use "rcarriga/nvim-notify"
   -- use "kyazdani42/nvim-web-devicons"
@@ -120,12 +129,17 @@ return require('packer').startup(function(use)
   -- use "folke/todo-comments.nvim"
   -- use "andymass/vim-matchup"
   -- Git
-  use "lewis6991/gitsigns.nvim"
-  use "f-person/git-blame.nvim"
-  use "ruifm/gitlinker.nvim"
-  use "mattn/vim-gist"
-  use "mattn/webapi-vim"
+  -- Markdown preview plugin
+  -- install without yarn or npm
 
+  -- use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+  -- use "davidgranstrom/nvim-markdown-preview" 
+  use {
+
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    ft = "markdown",
+  }
   if packer_bootstrap then
     require('packer').sync()
   end
